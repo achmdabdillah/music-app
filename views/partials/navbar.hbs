@@ -1,0 +1,35 @@
+<div class="container">
+  <nav class="navbar navbar-light bg-brokenwhite">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand img-fluid"><img height="50px" src="/static/icons/spotify.png" alt=""></a>
+      
+      {{#if isLogin}}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-brokenwhite">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person-circle fs-3 black"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="/upload">Upload songs</a></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {{else}}
+      <form class="d-flex">
+        <a href="/login" class="btn btn-light me-2">Login</a>
+        <a href="/register" class="btn btn-success" type="submit">Register</a>
+      </form>
+      {{/if}}
+    </div>
+  </nav>
+</div>

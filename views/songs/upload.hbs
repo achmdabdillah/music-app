@@ -1,0 +1,25 @@
+{{>head}}
+{{>navbar}}
+<div class="container text center pt-5">
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Upload your mp3<img src="/static/icons/attach.svg" alt=""></label>
+      <input class="form-control" name="music" type="file" id="formFile">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+      <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Artist</span>
+      <input type="text" class="form-control" name="artist" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+      <label for="formFile" class="form-label">Album cover <img src="/static/icons/disc.svg" alt=""></label>
+      <input type="text" class="form-control ms-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="text-center">
+      <button class="btn btn-success mt-3 px-5 py-2" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,18 @@
+{{>head}}
+
+{{#if message}}
+  <div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+  </div>
+{{/if}}
+
+{{>navbar}}
+
+
+<div class="container-sm text-center mt-5">
+    <form action="" method="POST">
+        <input class="col-1 input-group my-3 ps-2" type="email" name="email" placeholder="enter email address">
+        <input class="col-1 input-group ps-2" type="password" name="password" placeholder="enter password">
+        <button type="submit" class="btn btn-success mt-3 px-5 py-2">Login</button>
+    </form>
+</div>
