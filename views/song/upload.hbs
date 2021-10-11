@@ -1,0 +1,41 @@
+{{>head}}
+{{>navbar}}
+<div class="container text center pt-5">
+  <form action="/songs/upload" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Genre :</label>
+        <select name="genre_id" class="form-select" id="genre">
+          <option selected>Choose one..</option>
+          {{#each genres}}
+          <option value="{{this.genre_id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Artist :</label>
+        <select name="artist_id" class="form-select" id="inputGroupSelect01">
+          <option selected>Choose one..</option>
+          {{#each artists}}
+          <option value="{{this.artist_id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+      <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Upload your mp3<img src="/static/icons/attach.svg" alt=""></label>
+      <input class="form-control" name="music" type="file" id="formFile">
+    </div>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Album cover <img src="/static/icons/disc.svg" alt=""></label>
+        <input class="form-control" name="cover_music" type="file" id="formFile">
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success mt-3 px-5 py-2" type="submit">Submit</button>
+      </div>
+  </form>
+</div>

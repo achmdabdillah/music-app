@@ -1,0 +1,60 @@
+{{>head}}
+{{>navbar}}
+
+{{#if artist}}
+<div class="card text-center bg-white">
+  <div class="card-header">
+      {{#if isLogin}}
+    <div>
+      <a href="/artist/edit/{{artist.0.artist_id}}">Edit <i class="bi bi-brush-fill me-5"></i></a>
+      <a href="/artist/delete/{{artist.0.artist_id}}">Delete <i class="bi bi-trash-fill"></i></a>
+    </div>
+    {{/if}}
+    <img src="/uploads/{{artist.0.photo}}" class="card-img-top img-fluid picture my-5 mt-3 border-rad-10 shadow" alt="">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{artist.0.name}}</h5>
+    <p class="card-text w-50 m-auto">{{artist.0.about}}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <p>Career start : {{artist.0.start_career}}</p>
+  </div>
+</div>
+{{/if}}
+
+<div class="col my-5 w-50 m-auto">
+    <div class="vstack gap-3">
+        {{#each songs}}
+        <div class="bg-card black border-rad-10 shadow">
+            <div class="songs p-2">
+                <div class="song-item d-flex bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <img class="rounded-circle square" src="/uploads/{{this.cover_music}}" alt="{{this.title}}">
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <div class="song-info">
+                            <a href="#" class="fs-5 m-0">{{../artist.0.name}}</a>
+                            <p class="fw-light m-0">{{this.title}}</p>
+                        </div>
+                    </div>
+                    <div class="ms-auto p-2 bd-highlight d-flex">
+                        <audio controls class="me-3">
+                            <source src="/uploads/{{this.music}}">
+                        </audio>
+                        <div>
+                            <button type="button" class="btn bg-card dropdown-toggle dropdown-toggle-split my-1 me-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu align-items-center">
+                            <li><a class="dropdown-item" href="#">Add to playlists</a></li>
+                            <li><a class="dropdown-item" href="/songs/edit/{{this.music_id}}">Edit</a></li>
+                            <li><a class="dropdown-item" href="/songs/delete/{{this.music_id}}">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

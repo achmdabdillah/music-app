@@ -6,6 +6,7 @@ const connectionPool = mysql.createPool({
     password: null,
     database: 'db_music',
     connectionLimit: 5,
+    multipleStatements: true
 })
 
 module.exports = connectionPool;

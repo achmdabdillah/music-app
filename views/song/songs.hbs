@@ -1,0 +1,41 @@
+{{>head}}
+{{>navbar}}
+
+<div class="col mt-3 mb-5 w-75 m-auto">
+    <div class="vstack gap-3">
+        <h3>My songs</h3>
+        {{!-- SONGS 1 --}}
+        {{#each songs}}
+        <div class="bg-card black border-rad-10 shadow">
+            <div class="songs p-2">
+                <div class="song-item d-flex bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <img class="rounded-circle square" src="/uploads/{{this.cover_music}}" alt="{{this.title}}">
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <div class="song-info">
+                            <a href="artist/{{this.artist_id}}" class="fs-5 m-0">{{this.name}}</a>
+                            <p class="fw-light m-0">{{this.title}}</p>
+                        </div>
+                    </div>
+                    <div class="ms-auto p-2 bd-highlight d-flex">
+                        <audio controls class="me-3">
+                            <source src="/uploads/{{this.music}}">
+                        </audio>
+                        <div>
+                            <button type="button" class="btn bg-card dropdown-toggle dropdown-toggle-split my-1 me-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu align-items-center">
+                            <li><a class="dropdown-item" href="#">Add to playlists</a></li>
+                            <li><a class="dropdown-item" href="/songs/edit/{{this.music_id}}">Edit</a></li>
+                            <li><a class="dropdown-item" href="/songs/delete/{{this.music_id}}">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

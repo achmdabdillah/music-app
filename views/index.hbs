@@ -101,15 +101,13 @@
                         {{!-- GENRE BUTTON --}}
                         <div class="container">
                             <div class="row row-cols-2">
-                                <div class="col g-3"><a href="#" class="btn btn-outline-dark border-rad-10">Pop</a></div>
-                                <div class="col g-3"><a href="#" class="btn btn-outline-dark border-rad-10">Rock</a></div>
-                                <div class="col g-3"><a href="#" class="btn btn-outline-dark border-rad-10">Dangdut</a></div>
-                                <div class="col g-3"><a href="#" class="btn btn-outline-dark border-rad-10">Melayu</a></div>
+                                {{#each genres}}
+                                <div class="col g-3"><a href="/songs/genres/{{this.genre_id}}" class="btn btn-outline-dark border-rad-10">{{this.name}}</a></div>
+                                {{/each}}
                             </div>
                         </div>
                     </div>
                     {{!-- Song Player --}}
-                    {{#if songs}}
                     <div class="col pt-3">
                         <div class="vstack gap-3">
                             <h3>My songs</h3>
@@ -119,85 +117,72 @@
                                 <div class="songs p-2">
                                     <div class="song-item d-flex bd-highlight">
                                         <div class="p-2 bd-highlight">
-                                            <img class="rounded-circle square" src="http://randomuser.me/api/portraits/women/11.jpg" alt="">
+                                            <img class="rounded-circle square" src="/uploads/{{this.cover_music}}" alt="{{this.title}}">
                                         </div>
                                         <div class="p-2 bd-highlight">
                                             <div class="song-info">
-                                                <p class="fs-5 m-0">{{this.name}}</p>
+                                                <a href="artist/{{this.artist_id}}" class="fs-5 m-0">{{this.name}}</a>
                                                 <p class="fw-light m-0">{{this.title}}</p>
                                             </div>
                                         </div>
-                                        <div class="ms-auto p-2 bd-highlight">
-                                            <a href="#"><i class="bi bi-heart-fill like-btn me-2 fs-4 "></i></a>
-                                            <button class="btn btn-outline-success btn-sm rounded-circle square-sm my-auto"><i class="fas fa-caret-right fs-3 ms-1"></i></i></button>
+                                        <div class="ms-auto p-2 bd-highlight d-flex">
+                                            <audio controls class="me-3 audio-index">
+                                                <source src="/uploads/{{this.music}}">
+                                            </audio>
+                                            <div>
+                                                <button type="button" class="btn bg-card dropdown-toggle dropdown-toggle-split my-1 me-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu align-items-center">
+                                                <li class="nav-item dropdown">
+                                                    <li class="nav-item dropdown dropend">
+                                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown dropstart" aria-expanded="false">
+                                                            Add to playlist
+                                                        </a>
+                                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+                                                        {{#each ../allPlaylists}}
+                                                            <li><a class="dropdown-item" href="#" onclick="addToPlaylist({{this.playlist_id}}, {{../this.music_id}})">{{this.name}}</a></li>
+                                                        {{/each}}
+                                                        </ul>
+                                                    </li>
+                                                </li>
+                                                <li><a class="dropdown-item" href="/songs/edit/{{this.music_id}}">Edit</a></li>
+                                                <li><a class="dropdown-item" href="/songs/delete/{{this.music_id}}">Delete</a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             {{/each}}
+                            <div class="text-center fw-bold my-3">
+                                <a href="/songs">See all songs</a>
+                            </div>
                         </div>
                     </div>
-                    {{/if}}
-                    <div class="col col-lg-4 bg-light border-rad-10 shadow">
+                    <div class="col col-lg-4 bg-light border-rad-10 shadow customOverflow">
                         <div class="col pt-3">
                             <div class="vstack gap-3">
                                 <h3 class="text-center">Your playlist</h3>
                                 {{!-- PLAYLIST 1 --}}
+                                {{#each playlists}}
                                 <div class="bg-card black border-rad-10 shadow">
                                     <div class="songs p-2">
                                         <div class="song-item d-flex bd-highlight">
                                             <div class="p-2 bd-highlight">
-                                                <img class="rounded-circle square" src="http://randomuser.me/api/portraits/women/11.jpg" alt="">
-                                            </div>
-                                            <div class="p-2 bd-highlight">
                                                 <div class="song-info">
-                                                    <p class="fs-5 p-2 m-0 fw-bold">Playlist 1</p>
+                                                    <a href="/songs/playlist/{{this.playlist_id}}" class="link lead fw-bold fs-5 p-2 m-0">{{this.name}}</a>
                                                 </div>
                                             </div>
                                             <div class="ms-auto p-2 bd-highlight">
-                                                <a href="#"><i class="bi bi-heart-fill like-btn me-2 fs-4 "></i></a>
                                                 <button class="btn btn-outline-success btn-sm rounded-circle square-sm my-auto"><i class="fas fa-caret-right fs-3 ms-1"></i></i></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {{!-- PLAYLIST 2 --}}
-                                <div class="bg-card black border-rad-10 shadow">
-                                    <div class="songs p-2">
-                                        <div class="song-item d-flex bd-highlight">
-                                            <div class="p-2 bd-highlight">
-                                                <img class="rounded-circle square" src="http://randomuser.me/api/portraits/women/11.jpg" alt="">
-                                            </div>
-                                            <div class="p-2 bd-highlight">
-                                                <div class="song-info">
-                                                    <p class="fs-5 p-2 m-0 fw-bold">Playlist 1</p>
-                                                </div>
-                                            </div>
-                                            <div class="ms-auto p-2 bd-highlight">
-                                                <a href="#"><i class="bi bi-heart-fill like-btn me-2 fs-4 "></i></a>
-                                                <button class="btn btn-outline-success btn-sm rounded-circle square-sm my-auto"><i class="fas fa-caret-right fs-3 ms-1"></i></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{!-- PLAYLIST 3 --}}
-                                <div class="bg-card black border-rad-10 shadow">
-                                    <div class="songs p-2">
-                                        <div class="song-item d-flex bd-highlight">
-                                            <div class="p-2 bd-highlight">
-                                                <img class="rounded-circle square" src="http://randomuser.me/api/portraits/women/11.jpg" alt="">
-                                            </div>
-                                            <div class="p-2 bd-highlight">
-                                                <div class="song-info">
-                                                    <p class="fs-5 p-2 m-0 fw-bold">Playlist 1</p>
-                                                </div>
-                                            </div>
-                                            <div class="ms-auto p-2 bd-highlight">
-                                                <a href="#"><i class="bi bi-heart-fill like-btn me-2 fs-4 "></i></a>
-                                                <button class="btn btn-outline-success btn-sm rounded-circle square-sm my-auto"><i class="fas fa-caret-right fs-3 ms-1"></i></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                {{/each}}
+                                <div class="text-center fw-bold my-3">
+                                    <a href="/songs/playlists">See all playlists</a>
                                 </div>
                             </div>
                         </div>
@@ -207,3 +192,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    function addToPlaylist(playlist_id, music_id){
+        alert(playlist_id)
+        alert(music_id)
+    }
+</script>

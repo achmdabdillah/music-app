@@ -1,0 +1,26 @@
+{{>head}}
+{{>navbar}}
+
+<div class="col col-lg-4 bg-light border-rad-10 shadow w-100">
+      <div class="col pt-3 w-75 mx-auto pb-5">
+          <div class="vstack gap-5">
+              <h3 class="text-center">Your playlist</h3>
+              {{!-- PLAYLIST 1 --}}
+              {{#each playlists}}
+              <div class="bg-card black border-rad-10 shadow">
+                  <div class="songs p-2">
+                      <div class="song-item d-flex bd-highlight">
+                          <div class="p-2 bd-highlight">
+                              <div class="song-info">
+                                  <a href="/songs/playlist/{{this.playlist_id}}" class="link lead fw-bold fs-5 p-2 m-0">{{this.name}}</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {{/each}}
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

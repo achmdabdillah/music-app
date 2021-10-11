@@ -1,0 +1,19 @@
+{{>head}}
+{{>navbar}}
+<div class="container text center pt-5">
+  <form action="/artist/edit/{{artist.artist_id}}" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="artist_id" value="{{artist.artist_id}}">
+  <input type="hidden" name="oldImage" value="{{artist.photo}}">
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Change photo <img src="/static/icons/disc.svg" alt=""></label>
+      <input class="form-control" name="cover_music" type="file" id="formFile">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">About :</span>
+      <textarea name="about" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">{{artist.about}}</textarea>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-success mt-3 px-5 py-2" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
